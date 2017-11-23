@@ -173,7 +173,7 @@ for tag in "${TagArray[@]}";do
     echo "Image $Image"
     if [ -z "$BuiltImage" ];then
         set -x
-        docker build -t $Image $DockerfileDir
+        docker build --build-arg http_proxy=$http_proxy --build-arg https_proxy=$https_proxy --build-arg no_proxy=$no_proxy -t $Image $DockerfileDir
         set +x
         BuiltImage=$Image
     fi
